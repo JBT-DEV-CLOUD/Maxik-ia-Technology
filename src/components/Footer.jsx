@@ -32,7 +32,6 @@ export default function Footer() {
           <span>
             © {new Date().getFullYear()} {marca.nombre}
           </span>
-          <span>Hecho con Vite + React · Desplegable en Vercel o Cloudflare</span>
         </div>
       </div>
     </footer>
