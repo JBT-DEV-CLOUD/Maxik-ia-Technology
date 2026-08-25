@@ -10,6 +10,49 @@ export const marca = {
   contactoEmail: 'soporte@maxik-ia.com',
 }
 
+// Servicios que ofrece la empresa (módulo de creación).
+export const servicios = [
+  {
+    id: 'web',
+    icono: 'web',
+    titulo: 'Páginas Web',
+    resumen:
+      'Sitios corporativos y landing pages rápidos, modernos y optimizados para buscadores.',
+    incluye: [
+      'Diseño a medida de tu marca',
+      'Responsive y accesible',
+      'Optimización SEO y velocidad',
+      'Formularios y analítica',
+    ],
+  },
+  {
+    id: 'tienda',
+    icono: 'tienda',
+    titulo: 'Tiendas Virtuales',
+    resumen:
+      'E-commerce completo con pagos en línea, catálogo y gestión de pedidos e inventario.',
+    incluye: [
+      'Catálogo, carrito y checkout',
+      'Pasarela de pagos',
+      'Inventario y pedidos',
+      'Panel de administración',
+    ],
+  },
+  {
+    id: 'app',
+    icono: 'app',
+    titulo: 'Aplicaciones y Apps',
+    resumen:
+      'Apps móviles y web a la medida de tu operación o de tus clientes, con integraciones.',
+    incluye: [
+      'iOS, Android y web',
+      'Integraciones y APIs',
+      'Notificaciones y offline',
+      'Publicación en tiendas',
+    ],
+  },
+]
+
 export const proyectos = [
   {
     ref: 'PRJ-001',

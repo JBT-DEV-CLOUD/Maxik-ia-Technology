@@ -13,6 +13,9 @@ export default function Header({ onIrSoporte }) {
         </a>
 
         <nav className={`nav ${abierto ? 'nav--open' : ''}`}>
+          <a href="#servicios" onClick={cerrar}>
+            Servicios
+          </a>
           <a href="#proyectos" onClick={cerrar}>
             Proyectos
           </a>

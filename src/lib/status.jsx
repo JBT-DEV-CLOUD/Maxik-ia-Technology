@@ -27,6 +27,7 @@ export const tiposRequerimiento = {
   bug: 'Error / Bug',
   mejora: 'Mejora',
   consulta: 'Consulta',
+  proyecto: 'Proyecto nuevo',
 }
 
 export function StatusPill({ tono = 'gris', children }) {

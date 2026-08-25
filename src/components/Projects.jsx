@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { proyectos } from '../data.js'
 import { estadosProyecto, StatusPill } from '../lib/status.jsx'
+import { Reveal, Stagger } from '../lib/motion.jsx'
 
 const filtros = [
   { id: 'todos', label: 'Todos' },
@@ -25,7 +26,7 @@ export default function Projects() {
   return (
     <section className="section" id="proyectos">
       <div className="wrap">
-        <div className="section__head">
+        <Reveal className="section__head">
           <div>
             <p className="eyebrow">Catálogo</p>
             <h2>Proyectos</h2>
@@ -44,9 +45,9 @@ export default function Projects() {
               </button>
             ))}
           </div>
-        </div>
+        </Reveal>
 
-        <div className="grid">
+        <Stagger className="grid" key={filtro}>
           {lista.map((p) => {
             const est = estadosProyecto[p.estado]
             return (
@@ -76,7 +77,7 @@ export default function Projects() {
               </article>
             )
           })}
-        </div>
+        </Stagger>
       </div>
     </section>
   )

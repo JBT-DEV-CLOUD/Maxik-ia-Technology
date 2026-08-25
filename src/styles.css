@@ -260,10 +260,44 @@ button {
     linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 46px 46px;
   mask-image: radial-gradient(120% 90% at 50% 0%, #000 40%, transparent 100%);
+  animation: gridDrift 26s linear infinite;
+  z-index: 0;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  width: 540px;
+  height: 540px;
+  right: -140px;
+  top: -160px;
+  background: radial-gradient(circle, rgba(79, 199, 166, 0.22), transparent 62%);
+  animation: glowFloat 15s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
 }
 .hero__inner {
   position: relative;
+  z-index: 1;
   padding: 88px 0 0;
+}
+/* Entrada escalonada del hero */
+.hero__inner > * {
+  animation: riseIn 0.75s cubic-bezier(0.22, 0.7, 0.24, 1) both;
+}
+.hero .eyebrow {
+  animation-delay: 0.05s;
+}
+.hero h1 {
+  animation-delay: 0.14s;
+}
+.hero__lead {
+  animation-delay: 0.26s;
+}
+.hero__actions {
+  animation-delay: 0.38s;
+}
+.opstrip {
+  animation-delay: 0.5s;
 }
 .hero .eyebrow {
   color: var(--primary-glow);
@@ -678,6 +712,164 @@ button {
   font-family: var(--mono);
   font-size: 0.72rem;
   color: #6f86a6;
+}
+
+/* ── Servicios (módulo de creación) ──────────────────────── */
+.scard {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: var(--shadow);
+  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+.scard:hover {
+  transform: translateY(-4px);
+  border-color: var(--line-strong);
+  box-shadow: 0 2px 4px rgba(18, 33, 31, 0.05), 0 18px 44px rgba(18, 33, 31, 0.1);
+}
+.scard__icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 15px;
+  display: grid;
+  place-items: center;
+  color: var(--primary);
+  background: linear-gradient(160deg, rgba(18, 165, 134, 0.18), rgba(18, 165, 134, 0.05));
+  transition: transform 0.2s ease;
+}
+.scard:hover .scard__icon {
+  transform: scale(1.06) rotate(-3deg);
+}
+.scard h3 {
+  font-size: 1.28rem;
+}
+.scard__desc {
+  color: var(--ink-soft);
+  font-size: 0.93rem;
+  margin: 0;
+}
+.scard__list {
+  list-style: none;
+  padding: 0;
+  margin: 2px 0 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+.scard__list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--ink);
+}
+.scard__check {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  border-radius: 6px;
+  display: grid;
+  place-items: center;
+  color: var(--primary);
+  background: rgba(18, 165, 134, 0.14);
+}
+.scard__cta {
+  margin-top: auto;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  padding: 4px 0 0;
+  color: var(--primary);
+  font-family: var(--body);
+  font-weight: 600;
+  font-size: 0.94rem;
+}
+.scard__cta:hover {
+  color: var(--primary-2);
+}
+.scard__arrow {
+  transition: transform 0.16s ease;
+}
+.scard__cta:hover .scard__arrow {
+  transform: translateX(4px);
+}
+
+/* ── Animaciones ─────────────────────────────────────────── */
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes gridDrift {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 46px 46px;
+  }
+}
+@keyframes glowFloat {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: translate(0, 0);
+  }
+  50% {
+    opacity: 0.85;
+    transform: translate(-16px, 12px);
+  }
+}
+
+/* Aparece al entrar en pantalla */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Cascada de hijos */
+.stagger > * {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.stagger.is-visible > * {
+  opacity: 1;
+  transform: none;
+}
+.stagger.is-visible > *:nth-child(1) {
+  transition-delay: 0.04s;
+}
+.stagger.is-visible > *:nth-child(2) {
+  transition-delay: 0.12s;
+}
+.stagger.is-visible > *:nth-child(3) {
+  transition-delay: 0.2s;
+}
+.stagger.is-visible > *:nth-child(4) {
+  transition-delay: 0.28s;
+}
+.stagger.is-visible > *:nth-child(5) {
+  transition-delay: 0.36s;
+}
+.stagger.is-visible > *:nth-child(6) {
+  transition-delay: 0.44s;
 }
 
 /* ── Responsive ──────────────────────────────────────────── */

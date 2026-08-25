@@ -1,5 +1,6 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { proyectos, requerimientosDemo } from '../data.js'
+import { Reveal, Stagger } from '../lib/motion.jsx'
 import {
   estadosRequerimiento,
   prioridades,
@@ -41,16 +42,31 @@ function fecha(iso) {
   return new Date(iso).toLocaleDateString('es', { day: '2-digit', month: 'short' })
 }
 
-export default function Support() {
+export default function Support({ solicitud }) {
   const [form, setForm] = useState(formVacio)
   const [errores, setErrores] = useState({})
   const [enviados, setEnviados] = useState([])
   const [confirmacion, setConfirmacion] = useState(null)
   const [filtro, setFiltro] = useState('todos')
+  const tituloRef = useRef(null)
 
   useEffect(() => {
     setEnviados(cargarGuardados())
   }, [])
+
+  // Cuando llega una solicitud desde el módulo de Servicios, precarga el formulario.
+  useEffect(() => {
+    if (!solicitud) return
+    setConfirmacion(null)
+    setForm((f) => ({
+      ...f,
+      titulo: `Solicitud de servicio: ${solicitud.nombre}`,
+      tipo: 'proyecto',
+    }))
+    setErrores({})
+    const t = setTimeout(() => tituloRef.current?.focus(), 500)
+    return () => clearTimeout(t)
+  }, [solicitud])
 
   const set = (campo) => (e) => setForm((f) => ({ ...f, [campo]: e.target.value }))
 
@@ -98,7 +114,7 @@ export default function Support() {
   return (
     <section className="section section--tint" id="soporte">
       <div className="wrap">
-        <div className="section__head">
+        <Reveal className="section__head">
           <div>
             <p className="eyebrow">Mesa de ayuda</p>
             <h2>Requerimientos de soporte</h2>
@@ -107,9 +123,9 @@ export default function Support() {
               abajo.
             </p>
           </div>
-        </div>
+        </Reveal>
 
-        <div className="support">
+        <Stagger className="support">
           {/* Formulario */}
           <div className="panel">
             {confirmacion ? (
@@ -167,6 +183,7 @@ export default function Support() {
                   </label>
                   <input
                     id="titulo"
+                    ref={tituloRef}
                     className="input"
                     value={form.titulo}
                     onChange={set('titulo')}
@@ -296,7 +313,7 @@ export default function Support() {
               compartirlos entre usuarios (ver README).
             </p>
           </div>
-        </div>
+        </Stagger>
       </div>
     </section>
   )

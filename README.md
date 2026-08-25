@@ -37,6 +37,9 @@ npm run preview   # sirve dist/ localmente para revisarla
 Casi todo se edita en un solo archivo: **`src/data.js`**.
 
 - `marca`: nombre, claim y correo de contacto.
+- `servicios`: el módulo de creación (Páginas Web, Tiendas Virtuales, Apps). Cada uno tiene
+  `titulo`, `resumen`, `incluye` (lista) e `icono` (`web`, `tienda` o `app`). El botón
+  "Solicitar este servicio" precarga el formulario de requerimientos automáticamente.
 - `proyectos`: tu lista de proyectos. Cada uno necesita un `ref` único (ej. `PRJ-007`),
   `titulo`, `resumen`, `etiquetas`, `estado`, `progreso` (0–100), `responsable` y `actualizado`.
   - Estados válidos: `activo`, `en-pausa`, `entregado`, `planificado`.

@@ -1,4 +1,15 @@
 import { marca } from '../data.js'
+import { useCountUp } from '../lib/motion.jsx'
+
+function Contador({ valor, etiqueta }) {
+  const n = useCountUp(valor, { start: true })
+  return (
+    <div className="opstrip__cell">
+      <div className="opstrip__num">{String(n).padStart(2, '0')}</div>
+      <div className="opstrip__label">{etiqueta}</div>
+    </div>
+  )
+}
 
 export default function Hero({ stats, onIrSoporte }) {
   return (
@@ -7,12 +18,12 @@ export default function Hero({ stats, onIrSoporte }) {
         <p className="eyebrow">{marca.claim}</p>
         <h1>Tus proyectos y tu soporte, en un solo lugar.</h1>
         <p className="hero__lead">
-          Consulta el avance de cada proyecto y registra requerimientos de soporte con
-          seguimiento por estado. Claro para tu equipo, claro para tus clientes.
+          Creamos tu página web, tu tienda en línea o tu app, y te damos seguimiento con
+          soporte por estado. Claro para tu equipo, claro para tus clientes.
         </p>
         <div className="hero__actions">
-          <a href="#proyectos" className="btn btn--onDark">
-            Ver proyectos
+          <a href="#servicios" className="btn btn--onDark">
+            Ver servicios
           </a>
           <button className="btn btn--outlineDark" onClick={onIrSoporte}>
             Crear requerimiento
@@ -20,18 +31,9 @@ export default function Hero({ stats, onIrSoporte }) {
         </div>
 
         <div className="opstrip">
-          <div className="opstrip__cell">
-            <div className="opstrip__num">{String(stats.activos).padStart(2, '0')}</div>
-            <div className="opstrip__label">Proyectos activos</div>
-          </div>
-          <div className="opstrip__cell">
-            <div className="opstrip__num">{String(stats.abiertos).padStart(2, '0')}</div>
-            <div className="opstrip__label">Requerimientos abiertos</div>
-          </div>
-          <div className="opstrip__cell">
-            <div className="opstrip__num">{String(stats.resueltos).padStart(2, '0')}</div>
-            <div className="opstrip__label">Resueltos</div>
-          </div>
+          <Contador valor={stats.activos} etiqueta="Proyectos activos" />
+          <Contador valor={stats.abiertos} etiqueta="Requerimientos abiertos" />
+          <Contador valor={stats.resueltos} etiqueta="Resueltos" />
         </div>
       </div>
     </section>
