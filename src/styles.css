@@ -186,7 +186,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 66px;
+  height: 88px;
 }
 .brand {
   display: flex;
@@ -204,13 +204,13 @@ button {
   flex: none;
 }
 .brand__logo {
-  height: 40px;
+  height: 60px;
   width: auto;
   display: block;
-  border-radius: 8px;
+  border-radius: 10px;
 }
 .footer .brand__logo {
-  height: 52px;
+  height: 104px;
 }
 .nav {
   display: flex;
@@ -690,9 +690,15 @@ button {
   }
 }
 @media (max-width: 720px) {
+  .header__inner {
+    height: 74px;
+  }
+  .brand__logo {
+    height: 50px;
+  }
   .nav {
     position: fixed;
-    inset: 66px 0 auto 0;
+    inset: 74px 0 auto 0;
     flex-direction: column;
     align-items: stretch;
     background: var(--surface);
