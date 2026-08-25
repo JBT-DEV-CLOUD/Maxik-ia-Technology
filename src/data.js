@@ -1,16 +1,15 @@
 // ─────────────────────────────────────────────────────────────
 //  DATOS DE LA PLATAFORMA
-//  Edita este archivo para cargar tus propios proyectos.
-//  Cada proyecto necesita un "ref" único (ej. PRJ-001).
+//  Edita este archivo para cargar tu contenido real.
 // ─────────────────────────────────────────────────────────────
 
 export const marca = {
   nombre: 'Maxik-IA Technology',
-  claim: 'Tecnología, proyectos y soporte',
-  contactoEmail: 'soporte@maxik-ia.com',
+  claim: 'Innovación • Automatización • Inteligencia Artificial',
+  contactoEmail: 'soporte@maxikia.com',
 }
 
-// Servicios que ofrece la empresa (módulo de creación).
+// ── Servicios que ofrece la empresa (módulo de creación) ──────
 export const servicios = [
   {
     id: 'web',
@@ -53,102 +52,75 @@ export const servicios = [
   },
 ]
 
-export const proyectos = [
+// ── Portafolio · sitios que hemos desarrollado ────────────────
+//  categoria válida (define ícono y color): cafe, market, viajes, envios
+export const portafolio = [
   {
-    ref: 'PRJ-001',
-    titulo: 'Portal de clientes',
+    categoria: 'cafe',
+    etiquetaCat: 'Cafetería',
+    nombre: 'Acuarius Café & Sabores',
     resumen:
-      'Área privada donde cada cliente consulta el estado de sus servicios, facturas y documentos.',
-    etiquetas: ['Web', 'Autenticación', 'Facturación'],
-    estado: 'activo',
-    progreso: 72,
-    responsable: 'Equipo Plataforma',
-    actualizado: '2026-08-18',
+      'Café de especialidad en Fontibón, Bogotá: carta de cafés, tés y postres, reservas en tiempo real y un recomendador de bebidas con IA.',
+    url: 'https://acuarius-cafe1.andrescastilho.workers.dev/',
+    etiquetas: ['Carta', 'Reservas', 'IA'],
   },
   {
-    ref: 'PRJ-002',
-    titulo: 'App de inventario',
+    categoria: 'market',
+    etiquetaCat: 'Mini market',
+    nombre: 'Mercadinho Brasileiro CO',
     resumen:
-      'Aplicación móvil para registrar entradas y salidas de almacén con lectura de código de barras.',
-    etiquetas: ['Móvil', 'Offline', 'Escaneo'],
-    estado: 'activo',
-    progreso: 40,
-    responsable: 'Equipo Móvil',
-    actualizado: '2026-08-21',
+      'Tienda de productos brasileños en Colombia —guaraná, brigadeiro, pão de queijo, açaí— con pedidos a domicilio.',
+    url: 'https://mercadinho-brasileiro-co.pages.dev/',
+    etiquetas: ['Catálogo', 'Domicilios'],
   },
   {
-    ref: 'PRJ-003',
-    titulo: 'Migración a la nube',
+    categoria: 'viajes',
+    etiquetaCat: 'Agencia de viajes',
+    nombre: 'Maxikia Global Travel',
     resumen:
-      'Traslado de la infraestructura on-premise a contenedores gestionados, con respaldos automáticos.',
-    etiquetas: ['Infraestructura', 'DevOps'],
-    estado: 'en-pausa',
-    progreso: 30,
-    responsable: 'Infraestructura',
-    actualizado: '2026-07-30',
+      'Agencia de viajes con planes todo incluido, cotizador con precio al instante y reserva por WhatsApp.',
+    url: 'https://maxikiaglobaltravel.com/',
+    etiquetas: ['Paquetes', 'Cotizador', 'Reservas'],
   },
   {
-    ref: 'PRJ-004',
-    titulo: 'Rediseño del sitio corporativo',
+    categoria: 'envios',
+    etiquetaCat: 'Envíos y entregas',
+    nombre: 'Maxikia Express',
     resumen:
-      'Nueva identidad visual, mejoras de accesibilidad y optimización de velocidad de carga.',
-    etiquetas: ['Diseño', 'Accesibilidad', 'SEO'],
-    estado: 'entregado',
-    progreso: 100,
-    responsable: 'Diseño',
-    actualizado: '2026-06-15',
-  },
-  {
-    ref: 'PRJ-005',
-    titulo: 'Panel de métricas en tiempo real',
-    resumen:
-      'Tablero para monitorear ventas, tráfico y alertas operativas desde una sola pantalla.',
-    etiquetas: ['Datos', 'Dashboards'],
-    estado: 'planificado',
-    progreso: 5,
-    responsable: 'Datos',
-    actualizado: '2026-08-10',
-  },
-  {
-    ref: 'PRJ-006',
-    titulo: 'Integración con pasarela de pago',
-    resumen:
-      'Conexión con la pasarela de pagos para cobros recurrentes y conciliación automática.',
-    etiquetas: ['Pagos', 'API'],
-    estado: 'activo',
-    progreso: 58,
-    responsable: 'Equipo Plataforma',
-    actualizado: '2026-08-22',
+      'App de mandados y entregas urgentes en Bogotá: mismo día, repartidores verificados y seguimiento en tiempo real.',
+    url: 'https://www.maxikia.com/',
+    etiquetas: ['Entregas', 'Rastreo', 'App'],
   },
 ]
 
-// Requerimientos de ejemplo. Los que envíes desde el formulario
-// se guardan en el navegador y aparecen junto a estos.
+// ── Requerimientos de ejemplo ─────────────────────────────────
+//  Los que envíes desde el formulario se guardan en el navegador
+//  y aparecen junto a estos.
 export const requerimientosDemo = [
   {
     ref: 'SUP-2026-014',
-    titulo: 'Error al descargar factura en PDF',
-    proyecto: 'PRJ-001',
-    tipo: 'incidente',
-    prioridad: 'alta',
+    titulo: 'Ajustar el recomendador de bebidas',
+    proyecto: 'Acuarius Café & Sabores',
+    tipo: 'mejora',
+    prioridad: 'media',
     estado: 'en-progreso',
     creado: '2026-08-20',
     demo: true,
   },
   {
     ref: 'SUP-2026-013',
-    titulo: 'Agregar filtro por fecha en el inventario',
-    proyecto: 'PRJ-002',
-    tipo: 'mejora',
-    prioridad: 'media',
+    titulo: 'Error al calcular tarifa por distancia',
+    proyecto: 'Maxikia Express',
+    tipo: 'incidente',
+    prioridad: 'alta',
     estado: 'abierto',
     creado: '2026-08-19',
     demo: true,
   },
   {
     ref: 'SUP-2026-011',
-    titulo: 'Consulta sobre exportación de datos',
-    proyecto: 'PRJ-005',
+    titulo: 'Consulta sobre pasarela de pagos',
+    proyecto: 'Mercadinho Brasileiro CO',
     tipo: 'consulta',
     prioridad: 'baja',
     estado: 'resuelto',

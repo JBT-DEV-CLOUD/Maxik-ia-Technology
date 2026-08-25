@@ -186,7 +186,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 94px;
+  height: 106px;
 }
 .brand {
   display: flex;
@@ -204,13 +204,13 @@ button {
   flex: none;
 }
 .brand__logo {
-  height: 68px;
+  height: 82px;
   width: auto;
   display: block;
-  border-radius: 11px;
+  border-radius: 13px;
 }
 .footer .brand__logo {
-  height: 112px;
+  height: 120px;
 }
 .nav {
   display: flex;
@@ -865,6 +865,141 @@ button {
   transform: translateX(4px);
 }
 
+/* ── Portafolio (tarjetas de sitios) ─────────────────────── */
+.pcard {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow);
+  transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+.pcard:hover {
+  transform: translateY(-4px);
+  border-color: var(--line-strong);
+  box-shadow: 0 2px 4px rgba(18, 33, 31, 0.05), 0 18px 44px rgba(18, 33, 31, 0.1);
+}
+.pcard__frame {
+  display: block;
+}
+.pcard__bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px;
+  background: #0e2036;
+}
+.pcard__dots {
+  display: inline-flex;
+  gap: 5px;
+}
+.pcard__dots i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.28);
+}
+.pcard__url {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: #9fb4cf;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+.pcard__shot {
+  height: 150px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.pcard__shot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 26px 26px;
+  opacity: 0.5;
+}
+.pcard__shot svg {
+  position: relative;
+  z-index: 1;
+  transform: scale(1.6);
+  transition: transform 0.2s ease;
+}
+.pcard:hover .pcard__shot svg {
+  transform: scale(1.72);
+}
+.pcard--cafe .pcard__shot {
+  background: linear-gradient(140deg, #6f4a2f, #3a2418);
+}
+.pcard--market .pcard__shot {
+  background: linear-gradient(140deg, #12876c, #0c5e4b);
+}
+.pcard--viajes .pcard__shot {
+  background: linear-gradient(140deg, #2f6bb0, #173f6e);
+}
+.pcard--envios .pcard__shot {
+  background: linear-gradient(140deg, #d08a2c, #9a5a15);
+}
+.pcard__body {
+  padding: 18px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  flex: 1;
+}
+.pcard__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.pcard__cat {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+.pcard h3 {
+  font-size: 1.2rem;
+}
+.pcard__desc {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  margin: 0;
+  flex: 1;
+}
+.pcard__cta {
+  margin-top: 4px;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+.pcard__cta:hover {
+  color: var(--primary-2);
+}
+.pcard__cta:hover .pcard__arrow {
+  transform: translate(2px, -2px);
+}
+.pcard__arrow {
+  transition: transform 0.16s ease;
+}
+.pcard__cta--off {
+  color: var(--ink-faint);
+  font-weight: 500;
+}
+
 /* ── Animaciones ─────────────────────────────────────────── */
 @keyframes riseIn {
   from {
@@ -959,14 +1094,14 @@ button {
 }
 @media (max-width: 720px) {
   .header__inner {
-    height: 74px;
+    height: 84px;
   }
   .brand__logo {
-    height: 50px;
+    height: 62px;
   }
   .nav {
     position: fixed;
-    inset: 74px 0 auto 0;
+    inset: 84px 0 auto 0;
     flex-direction: column;
     align-items: stretch;
     background: var(--surface);

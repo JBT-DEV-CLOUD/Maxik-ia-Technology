@@ -1,25 +1,58 @@
 import { useMemo, useState } from 'react'
-import { proyectos } from '../data.js'
-import { estadosProyecto, StatusPill } from '../lib/status.jsx'
+import { portafolio } from '../data.js'
+import { StatusPill } from '../lib/status.jsx'
 import { Reveal, Stagger } from '../lib/motion.jsx'
+
+// Íconos por categoría
+const Iconos = {
+  cafe: (
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 8h13v5a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8Z" />
+      <path d="M17 9h2.5a2.5 2.5 0 0 1 0 5H17" />
+      <path d="M8 3.5c-.4.6-.4 1.4 0 2M11.5 3.5c-.4.6-.4 1.4 0 2" />
+    </svg>
+  ),
+  market: (
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 7h16l-1 4H5L4 7Z" />
+      <path d="M4 7 3.2 4H2M6 11v7a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-7" />
+      <path d="M9 15h6" />
+    </svg>
+  ),
+  viajes: (
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M10.5 13.5 3 11l2-2 4 1 4-4c.9-.9 2.4-.9 3.3 0 .9.9.9 2.4 0 3.3l-4 4 1 4-2 2-2.5-7.5Z" />
+    </svg>
+  ),
+  envios: (
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M3 6h11v9H3zM14 9h4l3 3v3h-7z" />
+      <circle cx="7" cy="18" r="1.6" />
+      <circle cx="17.5" cy="18" r="1.6" />
+    </svg>
+  ),
+}
 
 const filtros = [
   { id: 'todos', label: 'Todos' },
-  { id: 'activo', label: 'Activos' },
-  { id: 'en-pausa', label: 'En pausa' },
-  { id: 'entregado', label: 'Entregados' },
-  { id: 'planificado', label: 'Planificados' },
+  { id: 'cafe', label: 'Cafetería' },
+  { id: 'market', label: 'Mini market' },
+  { id: 'viajes', label: 'Viajes' },
+  { id: 'envios', label: 'Envíos' },
 ]
 
-function fecha(iso) {
-  return new Date(iso).toLocaleDateString('es', { day: '2-digit', month: 'short', year: 'numeric' })
+function dominio(url) {
+  try {
+    return new URL(url).hostname.replace(/^www\./, '')
+  } catch {
+    return 'tu-sitio.com'
+  }
 }
 
 export default function Projects() {
   const [filtro, setFiltro] = useState('todos')
-
   const lista = useMemo(
-    () => (filtro === 'todos' ? proyectos : proyectos.filter((p) => p.estado === filtro)),
+    () => (filtro === 'todos' ? portafolio : portafolio.filter((p) => p.categoria === filtro)),
     [filtro],
   )
 
@@ -28,10 +61,10 @@ export default function Projects() {
       <div className="wrap">
         <Reveal className="section__head">
           <div>
-            <p className="eyebrow">Catálogo</p>
-            <h2>Proyectos</h2>
+            <p className="eyebrow">Portafolio</p>
+            <h2>Sitios que hemos creado</h2>
             <p className="section__sub">
-              Cada proyecto muestra su estado, avance y última actualización.
+              Algunos ejemplos de proyectos entregados. Haz clic para visitarlos.
             </p>
           </div>
           <div className="filters">
@@ -49,30 +82,54 @@ export default function Projects() {
 
         <Stagger className="grid" key={filtro}>
           {lista.map((p) => {
-            const est = estadosProyecto[p.estado]
+            const activo = p.url && p.url !== '#'
             return (
-              <article className="card" key={p.ref}>
-                <div className="card__top">
-                  <span className="ref">{p.ref}</span>
-                  <StatusPill tono={est.tono}>{est.label}</StatusPill>
-                </div>
-                <h3>{p.titulo}</h3>
-                <p className="card__desc">{p.resumen}</p>
-                <div className="tags">
-                  {p.etiquetas.map((t) => (
-                    <span className="tag" key={t}>
-                      {t}
+              <article className={`pcard pcard--${p.categoria}`} key={p.nombre}>
+                <a
+                  className="pcard__frame"
+                  href={activo ? p.url : undefined}
+                  target={activo ? '_blank' : undefined}
+                  rel={activo ? 'noopener noreferrer' : undefined}
+                  aria-label={`Visitar ${p.nombre}`}
+                >
+                  <div className="pcard__bar">
+                    <span className="pcard__dots">
+                      <i /><i /><i />
                     </span>
-                  ))}
-                </div>
-                <div>
-                  <div className="progress" aria-hidden="true">
-                    <div className="progress__bar" style={{ width: `${p.progreso}%` }} />
+                    <span className="pcard__url">{dominio(p.url)}</span>
                   </div>
-                </div>
-                <div className="card__foot">
-                  <span className="card__meta">{p.progreso}% · {p.responsable}</span>
-                  <span>Act. {fecha(p.actualizado)}</span>
+                  <div className="pcard__shot">{Iconos[p.categoria]}</div>
+                </a>
+
+                <div className="pcard__body">
+                  <div className="pcard__top">
+                    <span className="pcard__cat">{p.etiquetaCat}</span>
+                    <StatusPill tono={activo ? 'verde' : 'gris'}>
+                      {activo ? 'En línea' : 'Pendiente URL'}
+                    </StatusPill>
+                  </div>
+                  <h3>{p.nombre}</h3>
+                  <p className="pcard__desc">{p.resumen}</p>
+                  <div className="tags">
+                    {p.etiquetas.map((t) => (
+                      <span className="tag" key={t}>
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                  {activo ? (
+                    <a
+                      className="pcard__cta"
+                      href={p.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Visitar sitio
+                      <span className="pcard__arrow" aria-hidden="true">↗</span>
+                    </a>
+                  ) : (
+                    <span className="pcard__cta pcard__cta--off">Próximamente</span>
+                  )}
                 </div>
               </article>
             )

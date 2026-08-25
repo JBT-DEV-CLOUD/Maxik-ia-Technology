@@ -17,7 +17,7 @@ export default function Hero({ stats, onIrSoporte }) {
       <div className="wrap hero__grid">
         <div className="hero__text">
           <p className="eyebrow">{marca.claim}</p>
-          <h1>Tus proyectos y tu soporte, en un solo lugar.</h1>
+          <h1>Somos la tecnología que impulsa tu negocio.</h1>
           <p className="hero__lead">
             Creamos tu página web, tu tienda en línea o tu app, y te damos seguimiento con
             soporte por estado. Claro para tu equipo, claro para tus clientes.
@@ -40,7 +40,7 @@ export default function Hero({ stats, onIrSoporte }) {
 
       <div className="wrap">
         <div className="opstrip">
-          <Contador valor={stats.activos} etiqueta="Proyectos activos" />
+          <Contador valor={stats.sitios} etiqueta="Sitios en línea" />
           <Contador valor={stats.abiertos} etiqueta="Requerimientos abiertos" />
           <Contador valor={stats.resueltos} etiqueta="Resueltos" />
         </div>

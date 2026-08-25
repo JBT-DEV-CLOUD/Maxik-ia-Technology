@@ -5,7 +5,7 @@ import Services from './components/Services.jsx'
 import Projects from './components/Projects.jsx'
 import Support from './components/Support.jsx'
 import Footer from './components/Footer.jsx'
-import { proyectos, requerimientosDemo } from './data.js'
+import { portafolio, requerimientosDemo } from './data.js'
 
 export default function App() {
   const [solicitud, setSolicitud] = useState(null)
@@ -19,7 +19,7 @@ export default function App() {
     }
     const reqs = [...guardados, ...requerimientosDemo]
     return {
-      activos: proyectos.filter((p) => p.estado === 'activo').length,
+      sitios: portafolio.length,
       abiertos: reqs.filter((r) => r.estado === 'abierto' || r.estado === 'en-progreso').length,
       resueltos: reqs.filter((r) => r.estado === 'resuelto' || r.estado === 'cerrado').length,
     }

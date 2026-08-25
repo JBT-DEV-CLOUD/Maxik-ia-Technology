@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { proyectos, requerimientosDemo } from '../data.js'
+import { portafolio, requerimientosDemo } from '../data.js'
 import { Reveal, Stagger } from '../lib/motion.jsx'
 import {
   estadosRequerimiento,
@@ -194,7 +194,7 @@ export default function Support({ solicitud }) {
 
                 <div className="field-row">
                   <div className="field">
-                    <label htmlFor="proyecto">Proyecto relacionado</label>
+                    <label htmlFor="proyecto">Sitio / proyecto relacionado</label>
                     <select
                       id="proyecto"
                       className="select"
@@ -202,9 +202,9 @@ export default function Support({ solicitud }) {
                       onChange={set('proyecto')}
                     >
                       <option value="">General / otro</option>
-                      {proyectos.map((p) => (
-                        <option key={p.ref} value={p.ref}>
-                          {p.ref} · {p.titulo}
+                      {portafolio.map((p) => (
+                        <option key={p.nombre} value={p.nombre}>
+                          {p.nombre}
                         </option>
                       ))}
                     </select>

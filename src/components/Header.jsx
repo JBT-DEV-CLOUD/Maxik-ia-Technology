@@ -17,7 +17,7 @@ export default function Header({ onIrSoporte }) {
             Servicios
           </a>
           <a href="#proyectos" onClick={cerrar}>
-            Proyectos
+            Portafolio
           </a>
           <a href="#soporte" onClick={cerrar}>
             Soporte

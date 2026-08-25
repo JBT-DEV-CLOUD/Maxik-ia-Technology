@@ -40,9 +40,10 @@ Casi todo se edita en un solo archivo: **`src/data.js`**.
 - `servicios`: el módulo de creación (Páginas Web, Tiendas Virtuales, Apps). Cada uno tiene
   `titulo`, `resumen`, `incluye` (lista) e `icono` (`web`, `tienda` o `app`). El botón
   "Solicitar este servicio" precarga el formulario de requerimientos automáticamente.
-- `proyectos`: tu lista de proyectos. Cada uno necesita un `ref` único (ej. `PRJ-007`),
-  `titulo`, `resumen`, `etiquetas`, `estado`, `progreso` (0–100), `responsable` y `actualizado`.
-  - Estados válidos: `activo`, `en-pausa`, `entregado`, `planificado`.
+- `portafolio`: los sitios que muestras como ejemplos. Cada uno tiene `categoria`
+  (`cafe`, `market`, `viajes` o `envios`, define ícono y color), `etiquetaCat`, `nombre`,
+  `resumen`, `url` (el enlace real del sitio) y `etiquetas`. Mientras `url` sea `'#'` la tarjeta
+  aparece como "Pendiente URL"; al poner el enlace real cambia a "En línea" con botón "Visitar sitio".
 - `requerimientosDemo`: ejemplos de soporte que se muestran en el panel de seguimiento.
 
 Los colores, tipografías y formas viven en **`src/styles.css`** (bloque `:root`, arriba del archivo).

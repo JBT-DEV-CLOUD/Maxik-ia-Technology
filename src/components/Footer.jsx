@@ -10,13 +10,14 @@ export default function Footer() {
               <img className="brand__logo" src="/logo.png" alt={marca.nombre} />
             </div>
             <p style={{ color: '#9db1cc', fontSize: '0.9rem', margin: 0 }}>
-              {marca.claim}. Proyectos y soporte para tu equipo y tus clientes.
+              Innovación, automatización e inteligencia artificial para impulsar tu negocio:
+              páginas web, tiendas virtuales, apps y soporte.
             </p>
           </div>
 
           <div className="footer__col">
             <h4>Secciones</h4>
-            <a href="#proyectos">Proyectos</a>
+            <a href="#proyectos">Portafolio</a>
             <a href="#soporte">Requerimientos</a>
             <a href="#inicio">Inicio</a>
           </div>
