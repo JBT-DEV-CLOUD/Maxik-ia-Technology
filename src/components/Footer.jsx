@@ -24,6 +24,11 @@ export default function Footer() {
           <div className="footer__col">
             <h4>{t.footer.contacto}</h4>
             <a href={`mailto:${marca.contactoEmail}`}>{marca.contactoEmail}</a>
+            {marca.whatsapp.map((w) => (
+              <a key={w.pais} href={w.link} target="_blank" rel="noopener noreferrer">
+                WhatsApp {w.pais} · {w.tel}
+              </a>
+            ))}
             <p>{t.footer.horario}</p>
           </div>
         </div>
