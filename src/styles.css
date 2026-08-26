@@ -910,30 +910,24 @@ button {
   border-radius: 999px;
 }
 .pcard__shot {
-  height: 150px;
+  height: 172px;
   display: grid;
   place-items: center;
   color: #fff;
   position: relative;
   overflow: hidden;
 }
-.pcard__shot::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-  background-size: 26px 26px;
-  opacity: 0.5;
-}
-.pcard__shot svg {
+.pcard__logo {
   position: relative;
   z-index: 1;
-  transform: scale(1.6);
-  transition: transform 0.2s ease;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.25s ease;
 }
-.pcard:hover .pcard__shot svg {
-  transform: scale(1.72);
+.pcard:hover .pcard__logo {
+  transform: scale(1.05);
 }
 .pcard--cafe .pcard__shot {
   background: linear-gradient(140deg, #6f4a2f, #3a2418);
@@ -1071,6 +1065,44 @@ button {
   transition-delay: 0.44s;
 }
 
+/* ── Selector de idioma ──────────────────────────────────── */
+.header__right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.langsw {
+  display: inline-flex;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  overflow: hidden;
+  background: var(--surface);
+}
+.langsw__btn {
+  border: none;
+  background: transparent;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--ink-soft);
+  padding: 6px 10px;
+  transition: background 0.15s, color 0.15s;
+}
+.langsw__btn:hover {
+  color: var(--primary);
+}
+.langsw__btn--on {
+  background: var(--primary);
+  color: #fff;
+}
+.nav__lang {
+  display: none;
+}
+.header__lang {
+  display: block;
+}
+
 /* ── Responsive ──────────────────────────────────────────── */
 @media (max-width: 900px) {
   .grid {
@@ -1122,6 +1154,22 @@ button {
   }
   .nav__toggle {
     display: inline-flex;
+  }
+  .header__lang {
+    display: none;
+  }
+  .nav__lang {
+    display: block;
+    padding: 10px 0 2px;
+  }
+  .langsw {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .langsw__btn {
+    flex: 1;
+    padding: 9px 0;
+    text-align: center;
   }
 }
 @media (max-width: 560px) {

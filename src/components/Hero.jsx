@@ -1,5 +1,6 @@
-import { marca } from '../data.js'
 import { useCountUp } from '../lib/motion.jsx'
+import { useI18n } from '../i18n.jsx'
+import { marca } from '../data.js'
 
 function Contador({ valor, etiqueta }) {
   const n = useCountUp(valor, { start: true })
@@ -12,23 +13,17 @@ function Contador({ valor, etiqueta }) {
 }
 
 export default function Hero({ stats, onIrSoporte }) {
+  const { t } = useI18n()
   return (
     <section className="hero" id="inicio">
       <div className="wrap hero__grid">
         <div className="hero__text">
-          <p className="eyebrow">{marca.claim}</p>
-          <h1>Somos la tecnología que impulsa tu negocio.</h1>
-          <p className="hero__lead">
-            Creamos tu página web, tu tienda en línea o tu app, y te damos seguimiento con
-            soporte por estado. Claro para tu equipo, claro para tus clientes.
-          </p>
+          <p className="eyebrow">{t.hero.slogan}</p>
+          <h1>{t.hero.h1}</h1>
+          <p className="hero__lead">{t.hero.lead}</p>
           <div className="hero__actions">
-            <a href="#servicios" className="btn btn--onDark">
-              Ver servicios
-            </a>
-            <button className="btn btn--outlineDark" onClick={onIrSoporte}>
-              Crear requerimiento
-            </button>
+            <a href="#servicios" className="btn btn--onDark">{t.hero.verServicios}</a>
+            <button className="btn btn--outlineDark" onClick={onIrSoporte}>{t.hero.crearReq}</button>
           </div>
         </div>
 
@@ -40,9 +35,9 @@ export default function Hero({ stats, onIrSoporte }) {
 
       <div className="wrap">
         <div className="opstrip">
-          <Contador valor={stats.sitios} etiqueta="Sitios en línea" />
-          <Contador valor={stats.abiertos} etiqueta="Requerimientos abiertos" />
-          <Contador valor={stats.resueltos} etiqueta="Resueltos" />
+          <Contador valor={stats.sitios} etiqueta={t.hero.statSitios} />
+          <Contador valor={stats.abiertos} etiqueta={t.hero.statAbiertos} />
+          <Contador valor={stats.resueltos} etiqueta={t.hero.statResueltos} />
         </div>
       </div>
     </section>

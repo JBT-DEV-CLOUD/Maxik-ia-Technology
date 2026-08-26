@@ -46,6 +46,12 @@ Casi todo se edita en un solo archivo: **`src/data.js`**.
   aparece como "Pendiente URL"; al poner el enlace real cambia a "En línea" con botón "Visitar sitio".
 - `requerimientosDemo`: ejemplos de soporte que se muestran en el panel de seguimiento.
 
+- **Idiomas:** todos los textos están en **`src/i18n.jsx`**, con cuatro versiones: `es`
+  (Español), `en` (English), `pt` (Português) y `cl` (Chile). Para cambiar un texto, edítalo
+  en cada idioma. La versión `cl` parte de `es` y solo sobreescribe algunas frases.
+- **Logos del portafolio:** están en **`public/logos/`** (`cafe.png`, `market.png`,
+  `viajes.png`, `envios.png`). Reemplaza el archivo por el logo real manteniendo el nombre.
+
 Los colores, tipografías y formas viven en **`src/styles.css`** (bloque `:root`, arriba del archivo).
 Los estados y prioridades se definen en **`src/lib/status.jsx`**.
 

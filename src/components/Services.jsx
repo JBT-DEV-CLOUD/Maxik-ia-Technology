@@ -1,5 +1,6 @@
 import { servicios } from '../data.js'
 import { Reveal, Stagger } from '../lib/motion.jsx'
+import { useI18n } from '../i18n.jsx'
 
 const Iconos = {
   web: (
@@ -32,44 +33,41 @@ const Check = () => (
 )
 
 export default function Services({ onSolicitar }) {
+  const { t } = useI18n()
   return (
     <section className="section" id="servicios">
       <div className="wrap">
         <Reveal className="section__head">
           <div>
-            <p className="eyebrow">Qué hacemos</p>
-            <h2>Creamos tu presencia digital</h2>
-            <p className="section__sub">
-              Desde el sitio web hasta la tienda en línea y la app. Elige un servicio y solicita
-              tu proyecto en segundos.
-            </p>
+            <p className="eyebrow">{t.services.eyebrow}</p>
+            <h2>{t.services.title}</h2>
+            <p className="section__sub">{t.services.sub}</p>
           </div>
         </Reveal>
 
         <Stagger className="grid">
-          {servicios.map((s) => (
-            <article className="scard" key={s.id}>
-              <div className="scard__icon">{Iconos[s.icono]}</div>
-              <h3>{s.titulo}</h3>
-              <p className="scard__desc">{s.resumen}</p>
-              <ul className="scard__list">
-                {s.incluye.map((item) => (
-                  <li key={item}>
-                    <span className="scard__check">
-                      <Check />
-                    </span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <button className="scard__cta" onClick={() => onSolicitar(s.titulo)}>
-                Solicitar este servicio
-                <span className="scard__arrow" aria-hidden="true">
-                  →
-                </span>
-              </button>
-            </article>
-          ))}
+          {servicios.map((s) => {
+            const info = t.services.items[s.id]
+            return (
+              <article className="scard" key={s.id}>
+                <div className="scard__icon">{Iconos[s.icono]}</div>
+                <h3>{info.titulo}</h3>
+                <p className="scard__desc">{info.resumen}</p>
+                <ul className="scard__list">
+                  {info.incluye.map((item) => (
+                    <li key={item}>
+                      <span className="scard__check"><Check /></span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <button className="scard__cta" onClick={() => onSolicitar(info.titulo)}>
+                  {t.services.cta}
+                  <span className="scard__arrow" aria-hidden="true">→</span>
+                </button>
+              </article>
+            )
+          })}
         </Stagger>
       </div>
     </section>

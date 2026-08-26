@@ -1,7 +1,27 @@
 import { useState } from 'react'
 import { marca } from '../data.js'
+import { useI18n, ordenIdiomas, etiquetaIdioma } from '../i18n.jsx'
+
+function LangSwitch() {
+  const { lang, setLang } = useI18n()
+  return (
+    <div className="langsw" role="group" aria-label="Idioma">
+      {ordenIdiomas.map((code) => (
+        <button
+          key={code}
+          className={`langsw__btn ${lang === code ? 'langsw__btn--on' : ''}`}
+          onClick={() => setLang(code)}
+          aria-pressed={lang === code}
+        >
+          {etiquetaIdioma[code]}
+        </button>
+      ))}
+    </div>
+  )
+}
 
 export default function Header({ onIrSoporte }) {
+  const { t } = useI18n()
   const [abierto, setAbierto] = useState(false)
   const cerrar = () => setAbierto(false)
 
@@ -13,18 +33,13 @@ export default function Header({ onIrSoporte }) {
         </a>
 
         <nav className={`nav ${abierto ? 'nav--open' : ''}`}>
-          <a href="#servicios" onClick={cerrar}>
-            Servicios
-          </a>
-          <a href="#proyectos" onClick={cerrar}>
-            Portafolio
-          </a>
-          <a href="#soporte" onClick={cerrar}>
-            Soporte
-          </a>
-          <a href="#contacto" onClick={cerrar}>
-            Contacto
-          </a>
+          <a href="#servicios" onClick={cerrar}>{t.nav.servicios}</a>
+          <a href="#proyectos" onClick={cerrar}>{t.nav.portafolio}</a>
+          <a href="#soporte" onClick={cerrar}>{t.nav.soporte}</a>
+          <a href="#contacto" onClick={cerrar}>{t.nav.contacto}</a>
+          <div className="nav__lang">
+            <LangSwitch />
+          </div>
           <button
             className="btn btn--primary nav__cta"
             onClick={() => {
@@ -32,18 +47,23 @@ export default function Header({ onIrSoporte }) {
               onIrSoporte()
             }}
           >
-            Nuevo requerimiento
+            {t.nav.cta}
           </button>
         </nav>
 
-        <button
-          className="nav__toggle"
-          aria-label={abierto ? 'Cerrar menú' : 'Abrir menú'}
-          aria-expanded={abierto}
-          onClick={() => setAbierto((v) => !v)}
-        >
-          {abierto ? '✕' : '☰'}
-        </button>
+        <div className="header__right">
+          <div className="header__lang">
+            <LangSwitch />
+          </div>
+          <button
+            className="nav__toggle"
+            aria-label={abierto ? 'Cerrar menú' : 'Abrir menú'}
+            aria-expanded={abierto}
+            onClick={() => setAbierto((v) => !v)}
+          >
+            {abierto ? '✕' : '☰'}
+          </button>
+        </div>
       </div>
     </header>
   )
