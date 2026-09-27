@@ -1091,6 +1091,25 @@ button {
   transition-delay: 0.44s;
 }
 
+/* ── Grupo empresarial (pie) ─────────────────────────────── */
+.footer__group {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.footer__group span {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #7f96b5;
+}
+.footer__group img {
+  height: 64px;
+  width: auto;
+}
+
 /* ── Selector de idioma ──────────────────────────────────── */
 .header__right {
   display: flex;

@@ -69,6 +69,7 @@ const es = {
   footer: {
     secciones: 'Secciones', contacto: 'Contacto', portafolio: 'Portafolio', requerimientos: 'Requerimientos', inicio: 'Inicio',
     horario: 'Lun a Vie · 9:00 – 18:00',
+    grupo: 'Una empresa de',
     tagline: 'Innovación, automatización e inteligencia artificial para impulsar tu negocio: páginas web, tiendas virtuales, apps y soporte.',
   },
 }
@@ -142,6 +143,7 @@ const en = {
   footer: {
     secciones: 'Sections', contacto: 'Contact', portafolio: 'Portfolio', requerimientos: 'Requests', inicio: 'Home',
     horario: 'Mon–Fri · 9:00 – 18:00',
+    grupo: 'A company of',
     tagline: 'Innovation, automation and artificial intelligence to power your business: websites, online stores, apps and support.',
   },
 }
@@ -215,6 +217,7 @@ const pt = {
   footer: {
     secciones: 'Seções', contacto: 'Contato', portafolio: 'Portfólio', requerimientos: 'Solicitações', inicio: 'Início',
     horario: 'Seg a Sex · 9:00 – 18:00',
+    grupo: 'Uma empresa do',
     tagline: 'Inovação, automação e inteligência artificial para impulsionar seu negócio: sites, lojas virtuais, apps e suporte.',
   },
 }

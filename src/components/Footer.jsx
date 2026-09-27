@@ -12,6 +12,10 @@ export default function Footer() {
               <img className="brand__logo" src="/logo.png" alt={marca.nombre} />
             </div>
             <p style={{ color: '#9db1cc', fontSize: '0.9rem', margin: 0 }}>{t.footer.tagline}</p>
+            <div className="footer__group">
+              <span>{t.footer.grupo}</span>
+              <img src="/logo-group.png" alt="Maxikia Group Co" />
+            </div>
           </div>
 
           <div className="footer__col">
