@@ -1106,8 +1106,10 @@ button {
   color: #7f96b5;
 }
 .footer__group img {
-  height: 64px;
-  width: auto;
+  width: 176px;
+  height: auto;
+  border-radius: 12px;
+  display: block;
 }
 
 /* ── Selector de idioma ──────────────────────────────────── */
