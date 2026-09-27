@@ -4,7 +4,7 @@
 
 export const marca = {
   nombre: 'Maxik-IA Technology',
-  contactoEmail: 'soporte@maxikiatechnology.com',
+  contactoEmail: 'soporte@maxik-iatechnology.com',
   whatsapp: [
     { pais: 'Colombia', tel: '+57 324 333 4302', link: 'https://wa.me/573243334302' },
     { pais: 'Chile', tel: '+56 9 7993 7452', link: 'https://wa.me/56979937452' },
