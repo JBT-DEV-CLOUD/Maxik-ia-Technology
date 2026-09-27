@@ -22,28 +22,44 @@ export const servicios = [
 //  categoria define ícono, color, logo y textos.
 export const portafolio = [
   {
+    id: 'acuarius',
     categoria: 'cafe',
     nombre: 'Acuarius Café & Sabores',
     url: 'https://acuarius-cafe1.andrescastilho.workers.dev/',
     logo: '/logos/cafe.png',
   },
   {
+    id: 'mercadinho',
     categoria: 'market',
     nombre: 'Mercadinho Brasileiro CO',
-    url: 'https://mercadinho-brasileiro-co.pages.dev/',
-    logo: '/logos/market.png',
+    url: 'https://mercadinhobrasileiroco.com',
+    logo: '/logos/market.jpg',
   },
   {
+    id: 'maxikia-travel',
     categoria: 'viajes',
     nombre: 'Maxikia Global Travel',
     url: 'https://maxikiaglobaltravel.com/',
     logo: '/logos/viajes.png',
   },
   {
+    id: 'maxikia-express',
     categoria: 'envios',
     nombre: 'Maxikia Express',
-    url: 'https://www.maxikia.com/',
+    url: 'https://maxikiaexpress.com',
     logo: '/logos/envios.png',
+  },
+  {
+    id: 'fonticerdo',
+    categoria: 'carnes',
+    nombre: 'Fonti Cerdo de la 18',
+    url: 'https://carniceria-fonticerdo-de-la-18.pages.dev/',
+  },
+  {
+    id: 'carnes-pr',
+    categoria: 'carnes',
+    nombre: 'Carnes Finas Puerto Rico',
+    url: 'https://carnes-finas-puerto-rico-2.pages.dev/',
   },
 ]
 

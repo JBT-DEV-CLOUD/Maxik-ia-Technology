@@ -929,17 +929,43 @@ button {
 .pcard:hover .pcard__logo {
   transform: scale(1.05);
 }
-.pcard--cafe .pcard__shot {
+.pcard__shot--cafe {
   background: linear-gradient(140deg, #6f4a2f, #3a2418);
 }
-.pcard--market .pcard__shot {
+.pcard__shot--market {
   background: linear-gradient(140deg, #12876c, #0c5e4b);
 }
-.pcard--viajes .pcard__shot {
+.pcard__shot--viajes {
   background: linear-gradient(140deg, #2f6bb0, #173f6e);
 }
-.pcard--envios .pcard__shot {
+.pcard__shot--envios {
   background: linear-gradient(140deg, #d08a2c, #9a5a15);
+}
+.pcard__shot--carnes {
+  background: linear-gradient(140deg, #b23a3a, #6f1d1d);
+}
+/* Ícono cuando la tarjeta no tiene logo */
+.pcard__shot > svg {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  transform: scale(1.6);
+  transition: transform 0.2s ease;
+}
+.pcard:hover .pcard__shot > svg {
+  transform: scale(1.7);
+}
+.pcard__shot::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 26px 26px;
+  opacity: 0.35;
+}
+.pcard__shot .pcard__logo {
+  z-index: 2;
 }
 .pcard__body {
   padding: 18px 20px 20px;

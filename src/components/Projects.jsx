@@ -4,6 +4,38 @@ import { StatusPill } from '../lib/status.jsx'
 import { Reveal, Stagger } from '../lib/motion.jsx'
 import { useI18n } from '../i18n.jsx'
 
+// Íconos por categoría (se usan cuando el proyecto no tiene logo)
+const Iconos = {
+  cafe: (
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 8h13v5a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8Z" />
+      <path d="M17 9h2.5a2.5 2.5 0 0 1 0 5H17" />
+      <path d="M8 3.5c-.4.6-.4 1.4 0 2M11.5 3.5c-.4.6-.4 1.4 0 2" />
+    </svg>
+  ),
+  market: (
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 7h16l-1 4H5L4 7Z" /><path d="M4 7 3.2 4H2M6 11v7a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-7" /><path d="M9 15h6" />
+    </svg>
+  ),
+  viajes: (
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M10.5 13.5 3 11l2-2 4 1 4-4c.9-.9 2.4-.9 3.3 0 .9.9.9 2.4 0 3.3l-4 4 1 4-2 2-2.5-7.5Z" />
+    </svg>
+  ),
+  envios: (
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M3 6h11v9H3zM14 9h4l3 3v3h-7z" /><circle cx="7" cy="18" r="1.6" /><circle cx="17.5" cy="18" r="1.6" />
+    </svg>
+  ),
+  carnes: (
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M13.5 4.5a5.5 5.5 0 0 1 5 7.8c-.6 1.3-1.9 2-3.3 2.2l-2 5.2a1.6 1.6 0 0 1-3-.1l-1-3-3-1a1.6 1.6 0 0 1-.1-3l5.2-2c.2-1.4.9-2.7 2.2-3.3.6-.3 1.3-.5 2-.5Z" />
+      <circle cx="14.5" cy="9.5" r="1.4" />
+    </svg>
+  ),
+}
+
 function dominio(url) {
   try {
     return new URL(url).hostname.replace(/^www\./, '')
@@ -16,7 +48,7 @@ export default function Projects() {
   const { t } = useI18n()
   const [filtro, setFiltro] = useState('todos')
 
-  const filtros = ['todos', 'cafe', 'market', 'viajes', 'envios']
+  const filtros = ['todos', 'cafe', 'market', 'carnes', 'viajes', 'envios']
   const lista = useMemo(
     () => (filtro === 'todos' ? portafolio : portafolio.filter((p) => p.categoria === filtro)),
     [filtro],
@@ -47,9 +79,9 @@ export default function Projects() {
         <Stagger className="grid" key={filtro}>
           {lista.map((p) => {
             const activo = p.url && p.url !== '#'
-            const info = t.portfolio.items[p.categoria]
+            const info = t.portfolio.items[p.id]
             return (
-              <article className="pcard" key={p.nombre}>
+              <article className="pcard" key={p.id}>
                 <a
                   className="pcard__frame"
                   href={activo ? p.url : undefined}
@@ -62,7 +94,11 @@ export default function Projects() {
                     <span className="pcard__url">{dominio(p.url)}</span>
                   </div>
                   <div className={`pcard__shot pcard__shot--${p.categoria}`}>
-                    <img className="pcard__logo" src={p.logo} alt={p.nombre} loading="lazy" />
+                    {p.logo ? (
+                      <img className="pcard__logo" src={p.logo} alt={p.nombre} loading="lazy" />
+                    ) : (
+                      Iconos[p.categoria]
+                    )}
                   </div>
                 </a>
 
@@ -74,9 +110,9 @@ export default function Projects() {
                     </StatusPill>
                   </div>
                   <h3>{p.nombre}</h3>
-                  <p className="pcard__desc">{info.resumen}</p>
+                  <p className="pcard__desc">{info?.resumen}</p>
                   <div className="tags">
-                    {info.etiquetas.map((tag) => (
+                    {info?.etiquetas.map((tag) => (
                       <span className="tag" key={tag}>{tag}</span>
                     ))}
                   </div>
