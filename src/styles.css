@@ -1091,6 +1091,57 @@ button {
   transition-delay: 0.44s;
 }
 
+/* ── Sección de video ────────────────────────────────────── */
+.videosec {
+  background: linear-gradient(180deg, var(--paper) 0%, #e6edeb 100%);
+}
+.videosec__head {
+  justify-content: center;
+  text-align: center;
+}
+.videosec__head > div {
+  max-width: 60ch;
+}
+.videosec__head .eyebrow {
+  justify-content: center;
+}
+.videowrap {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(18, 33, 31, 0.14), 0 2px 6px rgba(18, 33, 31, 0.08);
+  background: #06112d;
+}
+.promo {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+.promo__sound {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 3;
+  border: none;
+  background: rgba(6, 17, 45, 0.72);
+  color: #eaf2f7;
+  font-family: var(--body);
+  font-weight: 600;
+  font-size: 0.82rem;
+  padding: 8px 13px;
+  border-radius: 999px;
+  backdrop-filter: blur(6px);
+  transition: background 0.15s;
+}
+.promo__sound:hover {
+  background: var(--primary);
+}
+
 /* ── Grupo empresarial (pie) ─────────────────────────────── */
 .footer__group {
   margin-top: 20px;

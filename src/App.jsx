@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import Header from './components/Header.jsx'
 import Hero from './components/Hero.jsx'
+import VideoSection from './components/VideoSection.jsx'
 import Services from './components/Services.jsx'
 import Projects from './components/Projects.jsx'
 import Support from './components/Support.jsx'
@@ -40,6 +41,7 @@ export default function App() {
       <Header onIrSoporte={irSoporte} />
       <main>
         <Hero stats={stats} onIrSoporte={irSoporte} />
+        <VideoSection />
         <Services onSolicitar={solicitarServicio} />
         <Projects />
         <Support solicitud={solicitud} />

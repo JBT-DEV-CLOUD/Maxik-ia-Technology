@@ -3,6 +3,7 @@ import { createContext, useContext, useEffect, useState } from 'react'
 // ── Español (base) ───────────────────────────────────────────
 const es = {
   nombre: 'Español',
+  video: { eyebrow: 'Video', title: 'Míranos en acción', sub: 'Descubre cómo impulsamos tu negocio con tecnología.', unmute: 'Activar sonido', mute: 'Silenciar' },
   nav: { servicios: 'Servicios', portafolio: 'Portafolio', soporte: 'Soporte', contacto: 'Contacto', cta: 'Nuevo requerimiento' },
   hero: {
     slogan: 'Innovación • Automatización • Inteligencia Artificial',
@@ -77,6 +78,7 @@ const es = {
 // ── English ──────────────────────────────────────────────────
 const en = {
   nombre: 'English',
+  video: { eyebrow: 'Video', title: 'See us in action', sub: 'Discover how we power your business with technology.', unmute: 'Unmute', mute: 'Mute' },
   nav: { servicios: 'Services', portafolio: 'Portfolio', soporte: 'Support', contacto: 'Contact', cta: 'New request' },
   hero: {
     slogan: 'Innovation • Automation • Artificial Intelligence',
@@ -151,6 +153,7 @@ const en = {
 // ── Português ────────────────────────────────────────────────
 const pt = {
   nombre: 'Português',
+  video: { eyebrow: 'Vídeo', title: 'Veja em ação', sub: 'Descubra como impulsionamos o seu negócio com tecnologia.', unmute: 'Ativar som', mute: 'Silenciar' },
   nav: { servicios: 'Serviços', portafolio: 'Portfólio', soporte: 'Suporte', contacto: 'Contato', cta: 'Nova solicitação' },
   hero: {
     slogan: 'Inovação • Automação • Inteligência Artificial',
